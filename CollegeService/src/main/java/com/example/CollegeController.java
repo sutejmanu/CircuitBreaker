@@ -18,7 +18,8 @@ public class CollegeController {
     int i = 0;
 
     @GetMapping("/college/student")
-    @Retry(name = COLLEGE_SERVICE, fallbackMethod = "getDefaultStudentName")
+    //@Retry(name = COLLEGE_SERVICE, fallbackMethod = "getDefaultStudentName")
+    @CircuitBreaker(name = COLLEGE_SERVICE, fallbackMethod = "getDefaultStudentName")
     public String getStudentName(){
         i = i + 1;
         System.out.println("Attempt Number----:"+i);
